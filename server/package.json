@@ -17,10 +17,12 @@
   },
   "homepage": "https://github.com/hobozhang/node-music#readme",
   "dependencies": {
-      "dotenv": "~2.0.0",
-      "youtube-dl": "~1.11.1",
-      "express": "~4.0.0",
-      "mysql": "~2.11.1",
-      "body-parser": "~1.0.1"
+    "request": "~2.74.0",
+    "sequelize": "~3.23.0",
+    "dotenv": "~2.0.0",
+    "youtube-dl": "~1.11.1",
+    "express": "~4.0.0",
+    "mysql": "~2.11.1",
+    "body-parser": "~1.0.1"
   }
 }

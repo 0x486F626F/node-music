@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 var port = process.env.NODE_MUSIC_PORT || 2333;
 
 // start server
-app.use('/api', router.router);
+app.use('/api', router);
 
 app.listen(port);
 console.log('Start listening on port ' + port)
