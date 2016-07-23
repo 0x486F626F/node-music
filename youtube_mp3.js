@@ -2,7 +2,7 @@ var fs = require('fs')
 var youtube = require('youtube-dl');
 var mp3dir = process.env.NODE_MUSIC_MP3_DIR || 'mp3/'
 
-function download(url, title, callback) {
+function download(url, title, redirect) {
     var options = [
         "-f", "bestaudio",
         "--extract-audio",
@@ -13,7 +13,7 @@ function download(url, title, callback) {
         console.log('Start downloading ' + url);
         filename = (title || info.title) + '.mp3';
         music.pipe(fs.createWriteStream(mp3dir + filename));
-        callback(filename);
+        redirect(filename);
     });
 }
 
