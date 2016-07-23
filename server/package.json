@@ -2,7 +2,7 @@
   "name": "node-music",
   "version": "0.0.1",
   "description": "",
-  "main": "node-music.js",
+  "main": "node-music-server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
