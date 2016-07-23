@@ -16,7 +16,12 @@ function download(url, file, callback) {
         music.on('info', function(info) {
           console.log('Start downloading ' + url);
           filename = (file || info.id) + '.mp3';
-          dbYoutube.create({id: info.id, title: info.title, filename: filename});
+          dbYoutube.create({
+            id: info.id, 
+            source: 'youtube', 
+            title: info.title, 
+            filename: filename
+          });
           music.pipe(fs.createWriteStream(mp3dir + filename));
           callback(filename);
         });

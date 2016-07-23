@@ -19,6 +19,7 @@ var dbConn = new Sequelize(database, user, password, {
 
 var dbYoutube = dbConn.define('musics', {
   id: { type: Sequelize.STRING, primaryKey: true },
+  source: { type: Sequelize.STRING },
   title: { type: Sequelize.STRING },
   filename: { type: Sequelize.STRING }
 });
