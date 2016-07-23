@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/hobozhang/node-music#readme",
   "dependencies": {
+    "async": "~2.0.1",
     "request": "~2.74.0",
     "sequelize": "~3.23.0",
     "dotenv": "~2.0.0",
