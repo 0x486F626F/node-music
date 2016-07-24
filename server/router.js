@@ -1,7 +1,8 @@
 var express = require('express');
 var http = require('http');
 
-var youtube_mp3 = require('./youtube-mp3')
+var youtube_mp3 = require('./youtube-mp3');
+var dbMusic = require('./database').dbMusic;
 
 var router = express.Router();
 var static_url = process.env.NODE_MUSIC_STATIC_URL;
@@ -14,6 +15,7 @@ router.get('/', function(req, res) {
   res.json({ message: 'meow!' });
 });
 
+// add music to server and redirect to the file
 router.get('/dl/youtube', function(req, res) {
   url = req.param('url');
   title = req.param('title');
@@ -24,6 +26,7 @@ router.get('/dl/youtube', function(req, res) {
   });
 });
 
+// add music to server and return thr url
 router.get('/add/youtube', function(req, res) {
   url = req.param('url');
   title = req.param('title');
@@ -31,6 +34,19 @@ router.get('/add/youtube', function(req, res) {
     console.log('Downloading completed: ' + filename);
     mp3_url = static_url + encodeURI(filename);
     res.json({ "url": mp3_url });
+  });
+});
+
+// return all music files
+router.get('/musics', function(req, res) {
+  dbMusic.findAll({ attributes: ['title', 'filename'] }).then(function(record) {
+    var playlist = []
+    record.forEach(function(music) {
+      title = music.get('title');
+      url = process.env.NODE_MUSIC_STATIC_URL + music.get('filename');
+      playlist.push({'title': title, 'url': url});
+      if (playlist.length == record.length) { res.json(playlist); }
+    });
   });
 });
 
