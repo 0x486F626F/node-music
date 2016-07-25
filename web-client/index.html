@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Music</title>
+    <link rel="stylesheet" type="text/css" href="player.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
 
   <body>
 
-  <audio id="audio" preload="auto" controls="play">
-    <source type="audio/mp3"> 
-  </audio>
-
-  <div id="playlist" class="playlist">
+  <div class='player'>
+    <audio id="audio" preload="auto" controls="play"></audio>
+    <div id="playlist" class="playlist list-group"></div>
   </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="player.js"></script>
-  </body>
+</body>
 
-  </html>
+</html>

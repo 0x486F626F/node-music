@@ -13,7 +13,7 @@ function loadPlaylist(url) {
     if (xhr.readyState == 4) {
       var data = JSON.parse(xhr.response);
       data.forEach(function(value) {
-        $(".playlist").append('<div class="music"><a href="' + value.url +
+        $(".playlist").append('<div class="music-row list-group-item"><a href="' + value.url +
           '" class="music-url">'
           + value.title + '</a></div>');
       });
@@ -51,8 +51,7 @@ function initPlayer() {
 }
 
 function load(link, player) {
-  par = link.parent();
-  par.addClass('active').siblings().removeClass('active');
+  link.parent().addClass('active').siblings().removeClass('active');
   player.src = link.attr('href');
   current = link.parent().index();
   audio[0].load();
