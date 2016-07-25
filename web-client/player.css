@@ -1,0 +1,7 @@
+.player {
+  text-align: center;
+}
+
+.player .active a {
+  color: white;
+}
