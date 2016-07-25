@@ -1,5 +1,7 @@
+APIURL = 'http://music.mathematician.engineer';
+
 $(document).ready(function() {
-  url = 'http://music.hongbozhang.me/api/musics';
+  url = APIURL + '/api/musics';
   getPlaylist(url);
 });
 
@@ -8,9 +10,6 @@ var playlist;
 var tracks;
 var current;
 var currentTitle;
-
-function hideAddMusicForm() {
-}
 
 function loadPlaylist() {
   $(".playlist")[0].innerHTML = "";
@@ -38,7 +37,7 @@ function getPlaylist(url) {
 function addYoutubeMusic(youtubeURL, title) {
   console.log(URL);
   console.log(title);
-  url = 'http://music.hongbozhang.me/api/add/youtube?url=' + youtubeURL;
+  url = APIURL + '/api/add/youtube?url=' + youtubeURL;
   if (title.length > 0) {
     url = url + '&title=' + title;
   }
@@ -53,6 +52,10 @@ function addYoutubeMusic(youtubeURL, title) {
       $('#downloading')[0].style.display = 'none';
       loadPlaylist();
       tracks = document.getElementsByClassName('music-url');
+      $(tracks).click(function(e) {
+        e.preventDefault();
+        play(this, audio[0]);
+      });
     }
   }
   xhr.open('GET', url, true);
@@ -81,6 +84,10 @@ $('#ctrl-btn-shuffle').click(function() {
   shuffle(playlist);
   loadPlaylist();
   tracks = document.getElementsByClassName('music-url');
+  $(tracks).click(function(e) {
+    e.preventDefault();
+    play(this, audio[0]);
+  });
   play(tracks[0], audio[0]);
 });
 

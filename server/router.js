@@ -8,6 +8,7 @@ var router = express.Router();
 var static_url = process.env.NODE_MUSIC_STATIC_URL;
 
 router.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
   next();
 });
 
