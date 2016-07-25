@@ -11,13 +11,37 @@
 
   <div class='player'>
     <h4 id='current-title'>Loading</h4>
-    <audio id="audio" preload="auto" controls="play"></audio>
+    <div><audio id="audio" preload="auto" controls="play"></audio></div>
+
+    <div class="btn-group" id="ctrl-buttons" role="group">
+      <button type="button" class="btn btn-default" id="ctrl-btn-last">Last</button>
+      <button type="button" class="btn btn-default" id='ctrl-btn-shuffle'>Shuffle</button>
+      <button type="button" class="btn btn-default" id='ctrl-btn-show-add-form'>Add</button>
+      <button type="button" class="btn btn-default" id="ctrl-btn-next">Next</button>
+    </div>
+
+    <div id="add-music-form">
+      <div class="form-group">
+        <input type="url" class="form-control" id="add-music-youtube-url" placeholder="YouTube URL">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="add-music-title" placeholder="Title (optional)">
+      </div>
+      
+      <div class="btn-group" id="ctrl-buttons" role="group">
+      <button type="button" class="btn btn-default" id="ctrl-btn-add-music">Add</button>
+      <button type="button" class="btn btn-default" id="ctrl-btn-hide-add-form">Cancel</button>
+    </div>
+
+    </div>
+
     <div id="playlist" class="playlist list-group"></div>
+
+    <h5 id="downloading">Downloading...</h5>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="player.js"></script>
-</body>
-
+  </body>
 </html>
