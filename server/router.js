@@ -30,10 +30,10 @@ router.get('/dl/youtube', function(req, res) {
 router.get('/add/youtube', function(req, res) {
   url = req.param('url');
   title = req.param('title');
-  youtube_mp3.download(url, title, function(filename) {
+  youtube_mp3.download(url, title, function(filename, title) {
     console.log('Downloading completed: ' + filename);
     mp3_url = static_url + encodeURI(filename);
-    res.json({ "url": mp3_url });
+    res.json({ "title": title, "url": mp3_url });
   });
 });
 

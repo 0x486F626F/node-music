@@ -15,7 +15,7 @@ function download(url, cus_title, callback) {
         var music = youtube(url, options);
         music.on('info', function(info) {
           console.log('Start downloading ' + url);
-          filename = (cus_title || info.id) + '.mp3';
+          filename = (cus_title || info.title) + '.mp3';
           dbMusic.create({
             id: info.id, 
             source: 'youtube', 
@@ -23,13 +23,14 @@ function download(url, cus_title, callback) {
             filename: filename
           });
           music.pipe(fs.createWriteStream(mp3dir + filename));
-          callback(filename);
+          callback(filename, cus_title || info.title);
         });
       }
       else {
         filename = res.get('filename');
+        title = res.get('title');
         console.log('Found file: ' + filename);
-        callback(filename);
+        callback(filename, title);
       }
     });
 
