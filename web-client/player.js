@@ -8,6 +8,20 @@ var tracks;
 var current;
 
 function loadPlaylist(url) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4) {
+      var data = JSON.parse(xhr.response);
+      data.forEach(function(value) {
+        $(".playlist").append('<div class="music"><a href="' + value.url +
+          '" class="music-url">'
+          + value.title + '</a></div>');
+      });
+      initPlayer();
+    }
+  }
+  xhr.open('GET', url, true);
+  xhr.send(null);
 }
 
 function initPlayer() {
