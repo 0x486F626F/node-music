@@ -6,6 +6,7 @@ $(document).ready(function() {
 var audio;
 var tracks;
 var current;
+var currentTitle;
 
 function loadPlaylist(url) {
   var xhr = new XMLHttpRequest();
@@ -27,6 +28,7 @@ function loadPlaylist(url) {
 function initPlayer() {
   current = 0;
   audio = $('#audio');
+  currentTitle = $('#current-title');
   tracks = document.getElementsByClassName('music-url');
   len = tracks.length - 1;
   audio[0].volume = 1;
@@ -54,6 +56,7 @@ function load(link, player) {
   link.parent().addClass('active').siblings().removeClass('active');
   player.src = link.attr('href');
   current = link.parent().index();
+  currentTitle.text(link[0].text);
   audio[0].load();
   console.log('Loading ' + link.attr('href'));
 }
